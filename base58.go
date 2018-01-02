@@ -95,7 +95,7 @@ func Decode(str string) ([]byte, error) {
 	for i := range src[j:] {
 		c := alphabet.decode[src[i]]
 		if c == -1 {
-			return nil, fmt.Errorf("invalid character '%c' in decoding a base58 string \"%s\"", src[i], src)
+			return nil, errors.New("Invalid base58 character")
 		}
 		n.Mul(n, radix)
 		n.Add(n, big.NewInt(int64(c)))
